@@ -89,20 +89,15 @@ public class GuessNum {
     }
 
     public static boolean askYesNo(String msg) {
-        boolean isYes;
         while (true) {
             System.out.println(msg + ": ");
             String result = String.valueOf(scanner.next());
             if (result.equalsIgnoreCase("yes") || result.equalsIgnoreCase("y")) {
-                isYes = true;
+                return true;
             } else if (result.equalsIgnoreCase("no") || result.equalsIgnoreCase("n")) {
-                isYes = false;
-            } else {
-
-                continue;
+                return false;
             }
 
-            return Boolean.parseBoolean(String.valueOf(isYes));
         }
     }
 }
