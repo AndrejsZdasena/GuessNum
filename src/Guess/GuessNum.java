@@ -7,11 +7,12 @@ import java.util.Scanner;
 public class GuessNum {
     private static final Scanner scanner = new Scanner(System.in);
 
+
     public static void main(String[] args) {
 
         Random random = new Random();
 
-        String userName = askName("Enter you name");
+        String userName = askName("Enter your name");
 
         do {
 
@@ -51,9 +52,8 @@ public class GuessNum {
 
             }
 
-            askYesNo("Do you want to play again Y/n");
 
-        } while (!scanner.next().equals("n"));
+        } while (askYesNo("Do you want to play again Y/n"));
 
         System.out.print("Good Bye! " + userName);
 
@@ -82,14 +82,28 @@ public class GuessNum {
         }
     }
 
+
     public static String askName(String name) {
-        System.out.print(name + ":\n ");
+        System.out.print(name + ": ");
         return scanner.next();
     }
 
-    public static void askYesNo(String msg) {
-        System.out.print(msg + ": ");
-        scanner.next();
+    public static boolean askYesNo(String msg) {
+        boolean isYes;
+        while (true) {
+            System.out.println(msg + ": ");
+            String result = String.valueOf(scanner.next());
+            if (result.equalsIgnoreCase("yes") || result.equalsIgnoreCase("y")) {
+                isYes = true;
+            } else if (result.equalsIgnoreCase("no") || result.equalsIgnoreCase("n")) {
+                isYes = false;
+            } else {
+
+                continue;
+            }
+
+            return Boolean.parseBoolean(String.valueOf(isYes));
+        }
     }
 }
 
